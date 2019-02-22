@@ -3,4 +3,31 @@
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
+    <bean id="myShiroFilter" class="org.apache.shiro.spring.web.ShiroFilterFactoryBean">
+        <property name="securityManager" ref="securityManager"/>
+        <property name="loginUrl" value="/home/index"/>
+        <property name="unauthorizedUrl" value="403.html"/>
+        <property name="filterChainDefinitions">
+            <value>
+                /views/login.jsp = anon
+                /home/index = anon
+                /* = authc
+            </value>
+        </property>
+
+    </bean>
+
+    <bean id="securityManager" class="org.apache.shiro.web.mgt.DefaultWebSecurityManager">
+        <property name="realm" ref="myRealm"/>
+    </bean>
+
+
+    <bean id="myRealm" class="com.furao.shiroProject.realm.MyRealm">
+        <property name="credentialsMatcher" ref="credentialsMatche"/>
+    </bean>
+
+    <bean id="credentialsMatche" class="org.apache.shiro.authc.credential.HashedCredentialsMatcher">
+        <property name="hashIterations" value="1"/>
+        <property name="hashAlgorithmName" value="md5"/>
+    </bean>
 </beans>
