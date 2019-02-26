@@ -11,6 +11,11 @@
     <title>Title</title>
 </head>
 <body>
-hello
+<form action="login" method="post">
+    用户名：<input type="text" name="userName">
+    密码：<input type="text" name="password">
+    <button type="submit">登陆</button>
+</form>
+${info}
 </body>
 </html>

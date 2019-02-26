@@ -11,6 +11,8 @@
     <title>hello</title>
 </head>
 <body>
+${userName}
+${password}
 hello world!
 </body>
 </html>

@@ -10,6 +10,7 @@
         <property name="filterChainDefinitions">
             <value>
                 /views/login.jsp = anon
+                /home/login = anon
                 /home/index = anon
                 /* = authc
             </value>
